@@ -1,0 +1,25 @@
+name: "deploy on aws"
+
+on: workflow_dispatch
+
+jobs:
+    deploy
+      runs-on: self-hosted
+      steps:
+          - name: "setup nodejs"
+            uses: actions/setup-node@v4
+            with:
+                node-version: '12'
+
+          - name: "checkout code"
+            uses: actions/checkout@v2
+
+          - name: "Insall dependencies"
+            run: npm install
+
+          - name: "Install pm2 globally"
+            run: npm install pm2 -g
+
+
+            # hwllo world 
+            
