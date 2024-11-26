@@ -3,7 +3,7 @@ name: "deploy on aws"
 on: workflow_dispatch
 
 jobs:
-    deploy
+    deploy:
       runs-on: self-hosted
       steps:
           - name: "setup nodejs"
@@ -20,6 +20,8 @@ jobs:
           - name: "Install pm2 globally"
             run: npm install pm2 -g
 
+          - name: "Run the tests"
+            run: npm test
 
-            # hwllo world 
-            
+          - name: "Deploy to aws"
+            run: pm2 start src/index.js
